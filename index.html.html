@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>CARa5Libro</title>
+	<style type="text/css">
+		body{
+			background: green;
+		}	
+
+		#cabecera{
+			background: red;
+		}
+
+		.columna{
+			background: orange;
+		}
+		
+		[disabled]{
+			color: white;
+		}
+
+		[data-fecha^="199"]{
+			color: red;
+		}
+		
+		
+	</style>
+
+</head>
+<body>
+
+<div id=cabecera>
+	<img src="descarga.jpg" width="200px" alt="Foto de perfil">
+	<h2>Carl Grimes</h2>
+</div>
+
+<div id=principal>
+	<div id="navegacion" class="columna" disabled>
+			Nav
+	</div>
+	<div id="publicaciones" class="columna" data-fecha="1995">
+		Pub
+	</div>
+	<div id="chat" class="columna" data-fecha="1990">
+		Chat
+	</div>
+</div>
+
+<div id=pie>
+	<div>
+		<a href="#">
+			Terminos y condiciones
+		</a>
+	</div>
+
+	<div>
+		&copy; Copiright 2017	
+	</div>
+</div>	
+
+</body>
+</html>

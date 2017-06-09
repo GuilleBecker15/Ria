@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Coso de Datepicker</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style type="text/css">
+		input[type=time], input[type=date]{
+			background-color: rgba(255,150,150,0.5);
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+		<label for="mi_fecha">Fecha</label>
+		<input type="date" name="mi_fecha" id="mi_fecha" value="">
+		<br>
+		<label for="otra_fecha">Otra fecha</label>
+		<input type="time" name="otra_fecha" id="otra_fecha">
+	</div>
+	<div>
+		<label><input id="p" value=""></label>
+	</div>
+</body>
+<script>
+
+if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
+	{
+		console.log('En Firefox');
+		var inputs = document.querySelectorAll('input[type=date],input[type=time]')
+
+		for (var i = 0, l = inputs.length; i < l; i++) {
+			var input 	= inputs[i],
+				tipo 	= input.getAttribute('type');
+			console.log(input);
+			switch (tipo.toLowerCase()){
+				case 'date':
+					input.setAttribute('placeholder' , 'dd/mm/aaaa');
+					input.setAttribute('maxlength' , '10');
+					input.setAttribute('pattern', '\\d{2}\\/\\d{2}\\/\\d{4}');
+					console.log('Es del tipo date');
+					break;
+				case'time':
+					console.log('Es del tipo time');
+					input.setAttribute('placeholder' , '--:--');
+					input.setAttribute('maxlength' , '5');
+					input.setAttribute('pattern', '\\d{2}:\\d{2}');
+					break;
+			}
+		}
+
+		var x = document.getElementById("mi_fecha");
+		var y = document.getElementById("otra_fecha");
+		console.log('llegue1111');
+		x.addEventListener("focusout", myDateFocusFunction, true);
+		y.addEventListener("focusout", myHourFocusFunction, true);
+		 
+		function myDateFocusFunction() {
+			console.log(inputs);
+			var fechaCortada = inputs[0].value.split('/');
+			console.log(fechaCortada);
+			//var fechaBien = "Date "+fechaCortada[2]+"-"+(fechaCortada[1])+"-"+fechaCortada[0]+"T00:00:00.000Z";
+			var fechaBien = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0]);
+			//x.value = fechaBien;
+			console.log("fecha bien: " + fechaBien);
+			return	fechaCortada;
+			//document.getElementById("p").value = (x.value);
+		}
+		function myHourFocusFunction(){
+			var horaCortada = inputs[1].value.split('-');
+			var diferencia = (new Date().getTimezoneOffset()/60);
+			var fechaEntera = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0], horaCortada[0], horaCortada[1]);
+
+		}
+/*			window.onload = (function(){
+		try{
+		    $("mi_fecha").on('keyup', function(){
+		        var value = $(this).value;
+		        $("p").innerHTML(value);
+		    }).keyup();
+		}catch(e){}});*/
+		// Date 2014-10-13T14:13:00.000Z
+		// Date 2017-05-05T20:23:06.443Z
+		// 05/05/2017
+		
+/*		let genearateInputs = inp => function() {
+			function gen(){
+
+			}
+
+
+			gen.addDay = function(num) {
+				let dia = new Date(inp.value).getDate();
+
+				dia++;
+				inp.value= inp.Value.setDate(dia);
+			}
+		} 
+*/	}
+	else{
+		console.log('En otro browser.....');
+	}
+</script>							
+</html>

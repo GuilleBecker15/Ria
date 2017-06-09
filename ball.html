@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	@keyframes rebote{
+		0%{
+			bottom: 0;
+		}
+		50%{
+			bottom: 500px;
+		}
+		100%{
+			bottom: 0;
+		}
+	}
+
+	.ball{
+		height: 150px;
+		width: 150px;
+		background: black;
+		position: fixed;
+		border-radius: 75px;
+		/*margin-top: calc(50vh - 75px);
+		transition:2s;
+    	-webkit-transition:2s;
+    	-moz-transition:2s;*/
+    	bottom: 0;
+    	left: 0;
+    	animation-timing-function: ease-in-out;
+
+    	transition: left 5s;
+    }
+    .animamela{
+    	animation-name: rebote;
+    	animation-duration: 3s;
+    	animation-iteration-count: infinite;
+
+		left: 100vw;
+    }
+	
+ 
+
+</style>
+	</style>
+</head>
+<body>
+	<div id="pelota" class="ball"></div>
+</body>
+<script type="text/javascript">
+	document.getElementsByClassName('ball')[0].addEventListener('click', function(evt){
+			evt.currentTarget.classList.toggle('animamela');
+		});
+	document.addEventListener("keyup",function(evt) {
+    evt = evt || window.event;
+    if(evt.keyCode =! 37 && evt.key != 37){
+    	console.log("distinto");
+    }
+    var charCode = evt.keyCode || evt.key;
+    console.log(charCode + " :code");
+    console.log(evt);
+    var charStr = String.fromCharCode(charCode);
+    //alert(charStr);
+
+	});
+</script>
+</html>
