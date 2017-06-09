@@ -57,6 +57,12 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 		x.addEventListener("focusout", myDateFocusFunction, true);
 		y.addEventListener("focusout", myHourFocusFunction, true);
 		 
+		function myHourFocusFunction(){
+			var horaCortada = inputs[1].value.split('-');
+			var diferencia = (new Date().getTimezoneOffset()/60);
+			var fechaEntera = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0], horaCortada[0], horaCortada[1]);
+
+		}
 		function myDateFocusFunction() {
 			console.log(inputs);
 			var fechaCortada = inputs[0].value.split('/');
@@ -68,12 +74,6 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 			return	fechaCortada;
 			//document.getElementById("p").value = (x.value);
 		}
-		function myHourFocusFunction(){
-			var horaCortada = inputs[1].value.split('-');
-			var diferencia = (new Date().getTimezoneOffset()/60);
-			var fechaEntera = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0], horaCortada[0], horaCortada[1]);
-
-		}
 /*			window.onload = (function(){
 		try{
 		    $("mi_fecha").on('keyup', function(){
@@ -81,8 +81,7 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 		        $("p").innerHTML(value);
 		    }).keyup();
 		}catch(e){}});*/
-		// Date 2014-10-13T14:13:00.000Z
-		// Date 2017-05-05T20:23:06.443Z
+		
 		// 05/05/2017
 		
 /*		let genearateInputs = inp => function() {
@@ -100,6 +99,8 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 		} 
 */	}
 	else{
+		console.log('aslmd;add(\'\selectorelementshtml\'\)En otro browser.....');
+		console.log('En otro browser...a;sd;da..');
 		console.log('En otro browser.....');
 	}
 </script>							
