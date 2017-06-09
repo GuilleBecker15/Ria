@@ -57,6 +57,12 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 		x.addEventListener("focusout", myDateFocusFunction, true);
 		y.addEventListener("focusout", myHourFocusFunction, true);
 		 
+		function myHourFocusFunction(){
+			var horaCortada = inputs[1].value.split('-');
+			var diferencia = (new Date().getTimezoneOffset()/60);
+			var fechaEntera = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0], horaCortada[0], horaCortada[1]);
+
+		}
 		function myDateFocusFunction() {
 			console.log(inputs);
 			var fechaCortada = inputs[0].value.split('/');
@@ -67,12 +73,6 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 			console.log("fecha bien: " + fechaBien);
 			return	fechaCortada;
 			//document.getElementById("p").value = (x.value);
-		}
-		function myHourFocusFunction(){
-			var horaCortada = inputs[1].value.split('-');
-			var diferencia = (new Date().getTimezoneOffset()/60);
-			var fechaEntera = new Date(fechaCortada[2], (fechaCortada[1]-1), fechaCortada[0], horaCortada[0], horaCortada[1]);
-
 		}
 /*			window.onload = (function(){
 		try{
@@ -100,6 +100,9 @@ if(window.navigator.userAgent.toLocaleLowerCase().indexOf('firefox')>-1)
 		} 
 */	}
 	else{
+		console.log('En otro browser.....');
+		console.log('aslmd;add(\'\selectorelementshtml\'\)En otro browser.....');
+		console.log('En otro browser...a;sd;da..');
 		console.log('En otro browser.....');
 	}
 </script>							
