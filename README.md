@@ -1,3 +1,3 @@
 '#RIA2' 
 
-"nura ve rame "
+"nura ve  "
