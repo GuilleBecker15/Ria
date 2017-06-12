@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Test overlay</title>
+
+	<style type="text/css">
+		/* Reset */
+		* {
+			box-sizing: border-box;
+		}
+
+		body, div {
+			margin: 0;
+			padding: 0;
+		}
+		
+		/* Ventana modal */
+		.modal {
+			visibility: hidden;
+
+			transition: visibility 1s;
+		}
+
+		.modal.activo {
+			visibility: visible;
+		}
+
+		.modal .overlay {
+			position: fixed;
+			top: 0; bottom: 0;
+			left: 0; right: 0;
+			z-index: 1000;
+
+			background: rgba(0,0,0,0);
+
+			transition: background 1s;
+		}
+
+		.modal.activo .overlay {
+			background: rgba(0,0,0,0.6);
+		}
+
+		.modal .ventana {
+			position: fixed;
+			left: calc(50% - 250px);
+			top: -350px;
+			z-index: 1001;
+
+			width: 90%;
+			max-width: 500px;
+			padding: 26px 5px;
+
+			background: #8dbffe;
+			border-radius: 6px;
+
+			transition: top .5s;
+		}
+
+		.modal.activo .ventana {
+			top: 100px;
+		}
+
+		.modal .cuerpo {
+			padding: 1em;
+			background: white;
+		}
+
+		.modal .boton-cerrar {
+			display: inline-block;
+
+			position: absolute;
+			right: 5px; top: 5px;
+
+			font-family: 	sans-serif;
+			font-weight: 	bold;
+			font-size: 		12px;
+			text-align: 	center;
+			text-decoration:none;
+
+			background: red;
+			color: white;
+			width: 16px;
+			height: 16px;
+			border-radius: 50%;
+		}
+	
+		#activar {
+			margin: 40px 60px;
+		}
+
+	</style>
+</head>
+<body>
+
+<div class="modal">
+	<div class="overlay cerrar"></div>
+
+	<div class="ventana">
+		<a href="#" class="boton-cerrar cerrar">x</a>
+		
+		<div class="cuerpo">
+			Este es un modal lorem ipsum dolor sit amet la cosa loca esta ria sabelo ñere
+		</div>
+
+	</div>
+</div>
+
+<button type="button" id="activar">
+	Abrir
+</button>
+
+<script type="text/javascript">
+
+let bot_abrir 	= document.getElementById('activar'),
+	ventana 	= document.getElementsByClassName('modal')[0],
+	bots_cerrar = ventana.getElementsByClassName('cerrar');
+
+bot_abrir.addEventListener('click', function (evt)
+{
+	ventana.classList.add('activo');
+})
+
+for (let i = 0, l = bots_cerrar.length; i < l; i++)
+{
+	bots_cerrar[i].addEventListener('click', function (evt)
+	{
+		ventana.classList.remove('activo');
+	})
+}
+
+</script>
+</body>
+</html>

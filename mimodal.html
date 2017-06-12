@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+			/*reset*/
+		* {
+			box-sizing: border-box;
+		}
+
+		body, div {
+			margin: 0;
+			padding: 0;
+		}
+		.modal {
+			display: none;
+		}
+		
+		.modal.activo {
+			display: block;
+		}
+
+		.modal .overlay {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 1000;
+
+			background: rgba(0,0,0,0.6); 
+
+		}
+
+		.modal .ventana {
+			position: fixed;
+			left: calc(50% - 250px);
+			z-index: 1001;
+			top: 100px;
+			width: 90%;
+			max-width: 500px;
+			min-height: 350px;
+	
+			padding: 1em;
+
+			background: white;
+
+		}
+
+		.modal .cerrar {
+			position: absolute;
+
+			right: 5px; top: 5px;
+
+			font-family: sans-serif;
+			font-weight: bold;
+			font-size: 12px;
+
+			background: red;
+			color: white;
+
+		}
+
+		#activar{
+			margin: 40px 60px;
+		}
+	</style>
+</head>
+<body>
+	<div class="modal">
+		<div class="overlay">
+			
+		</div>
+		<div class="ventana">
+			<a class="cerrar"> X </a>
+			Este es un modal
+		</div>
+	</div>
+<button type="button" id="activar">Abrir</button>
+	<script type="text/javascript">
+		let bot_abrir 	= document.getElementById('activar'),
+			ventana		= document.getElementsByClassName('modal')[0],
+			bot_cerrar	= ventana.getElementsByClassName('cerrar')[0];
+
+		bot_abrir.addEventListener('click', function(evt){
+			ventana.classList.add('activo');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<title>Notificaciones</title>
+
+	<style type="text/css">
+	* {
+		box-sizing: border-box;
+	}
+
+
+	.notis {
+		font-family: 	sans-serif;
+		font-size: 	12px;
+	}
+
+		.notis a {
+			text-decoration: none;
+		}
+
+		.notis .zona-activa {
+			text-decoration:none;
+			font-size:		16px;
+			color: 			white;
+			background:		#315cde;
+			padding:		.1em 10px;
+			border-radius: 	4px;
+
+			cursor: pointer;
+		}
+
+		.notis .pendientes {
+			/* Esto lo deja chiquito y arriba */
+			position: relative;
+			bottom: 3px;
+
+			background: red;
+			font-weight:bold;
+			font-size:	60%;
+			padding:	2px;
+			border-radius: 3px;
+		}
+
+		.notis .pendientes:empty {
+			display: none;
+		}
+
+		.notis ul {
+			list-style: none;
+			width: 200px;
+			padding: 0;
+			margin: 4px 0 0 0;
+			max-height: 200px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+
+			display: none;
+		}
+
+		.notis .visible {
+			display: block;
+		}
+
+		.notis li {
+			width: 100%;
+			height: 4em;
+			border-bottom: solid 1px #666;
+			background: #d3d3d3;
+
+			padding: 1em;
+			cursor: pointer;
+		}
+
+		.notis li:last-child {
+			border-bottom: none;
+		}
+
+		.notis li:hover {
+			background: #eee;
+		}
+
+		.notis .subtexto {
+			display: block;
+			font-size: 80%;
+			color: #999;
+		}
+
+		/** Estilos para el menu **/
+		.menu {
+			position: fixed;
+			bottom: 0;
+
+			height: 3em;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+
+<div class="notis">
+	<span class="zona-activa">
+		Alertas
+		<span class="pendientes">3</span>
+	</span>
+	
+	<ul>
+		<li>
+			Llegó un mail
+			<span class="subtexto">Notificado hace un rato</span>
+		</li>
+		<li>
+			Ocurrió un evento
+			<span class="subtexto">Notificado a las 10:00</span>
+		</li>
+		<li>
+			Se incendia una moto
+			<span class="subtexto">Notificado a las 9:30</span>
+		</li>
+	</ul>
+</div>
+
+<div class="menu">
+	<button type="button" id="nuevo">
+		Agregar
+	</button>
+
+	<button type="button" id="borrar">
+		Borrar 1
+	</button>
+	
+	<button type="button" id="borrar3">
+		Borrar 3
+	</button>
+</div>
+
+<script type="text/javascript">
+
+/*****
+function agregarNotificacion
+Agrega una notificación nueva, agregandola también como pendiente de lectura
+txt: 	Texto principal
+subtxt: Subtexto
+****/
+function agregarNotificacion (txt /*String*/, subtxt /*String*/)
+{
+	let elem 	= document.createElement('li'),
+		texto 	= document.createTextNode(txt),
+		elemsub	= document.createElement('span')
+		subtexto= document.createTextNode(subtxt),
+		lista 	= document.querySelector('.notis ul'),
+		primero = lista.children[0];
+
+	elemsub.classList.add('subtexto');
+
+	elemsub.appendChild(subtexto);
+	elem.appendChild(texto);
+	elem.appendChild(elemsub);
+
+	lista.insertBefore(elem, primero); // Agregar notificación a la lista
+
+	// Si habían pendientes, sumarle uno
+	let pendientes 	= document.querySelector('.notis .pendientes'),
+		cantidad	= !!pendientes.innerText ? parseInt(pendientes.innerText) : 0;
+
+	pendientes.innerText = ++cantidad;
+
+	// Cerrar la lista, si estuviera abierta
+	lista.classList.remove('visible');
+}
+
+
+/*****
+function removerNotificacionVieja
+Remueve las notificaciones al final de la lista. Si cantidad se pasa como parámetro, se remueve esa cantidad
+****/
+function removerNotificacionVieja (cantidad /*Int*/)
+{
+	let lista 			= document.querySelector('.notis ul'),
+		notificaciones 	= document.querySelectorAll('.notis li');
+
+	cantidad = cantidad || 1;
+
+	while (cantidad && notificaciones.length >= cantidad)
+	{
+		notificaciones[notificaciones.length - cantidad].remove();
+		cantidad--;
+	}
+
+	// Cerrar la lista, si estuviera abierta
+	lista.classList.remove('visible');
+}
+
+let bot_abrir = document.querySelector('.notis .zona-activa');
+
+bot_abrir.addEventListener('click', function (evt)
+{
+	let lista 		= document.querySelector('.notis ul'),
+		pendientes	= document.querySelector('.notis .pendientes');
+
+	lista.classList.toggle('visible'); 	// Agrega o quita la clase "visible"
+	pendientes.innerHTML = '';			// Si había pendientes, los borra
+});
+
+
+/** Esto es para manejar los botones **/
+let contador = 0;
+
+document.getElementById('nuevo').addEventListener('click', function (evt)
+{
+	agregarNotificacion(`Nueva notificación (${ ++contador })`, `Notificado a las ${ (new Date()).toLocaleTimeString() }`);
+})
+
+document.getElementById('borrar').addEventListener('click', function (evt)
+{
+	removerNotificacionVieja();
+})
+
+document.getElementById('borrar3').addEventListener('click', function (evt)
+{
+	removerNotificacionVieja(3);
+})
+</script>
+</body>
+</html>

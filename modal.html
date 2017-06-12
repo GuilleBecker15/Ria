@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style type="text/css" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></style>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <button type="submit" name="boton" >Enviar</button>
+
+
+    <div class="col-md-8 col-md-offset-4">     
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Corfirmacion</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Para guardar los cambios debe introducir su contrase&ntilde;a</p>
+                    <p class="text-warning">Intruduzca su contrase&ntilde;a</p>
+                    <div id="divpass" class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <label for="password" class="col-md-4 control-label">Contraseña</label>
+                        <div class="col-md-8">
+                            <input id="confirmarPass" type="password" class="form-control" name="password" autofocus required>
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div><br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button id="modificarDatos" type="button" class="btn btn-primary">Guardar datos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $("#formularioModificacion").submit(function(e) {
+        e.preventDefault();
+        $("#myModal").modal('show');
+            $("#modificarDatos").click(function() {
+                document.getElementById("divpass").style.display = 'none';
+                var ultimo = document.getElementById('divpass');
+                var string = ultimo.outerHTML;
+                todo = document.getElementById('divaniadir').innerHTML = string;
+                console.log(todo);
+                alert(todo);
+            $("#formularioModificacion").unbind('submit').submit();
+            });
+    });
+</script>
+</html>
