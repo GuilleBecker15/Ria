@@ -1,0 +1,264 @@
+	.post {
+		margin: 1rem ;
+		border: solid 1px #ddd;
+		/*padding: 0;*/
+		/*overflow: hidden*/
+		height: unset;
+		/*animation*/
+		opacity: 0;
+		visibility: hidden;
+	    /*overflow: auto;*/
+		transition: opacity 1s, visibility 1s;
+		text-align: justify;
+		padding: 1rem 1rem;
+		padding-top: 0;
+
+
+	}
+
+	.visible { 
+		visibility: visible;
+		opacity: 1;
+	}
+	.content {
+	  /*padding: 0 15px;*/
+	  /*width: 380px;*/
+	}
+	.content /*h1*/ {
+	  margin-top: 0;
+	}
+	.content /* p */,
+	.sidebar /* p */{
+	  font-family: "BLOKKNeue-Regular";
+	  /*overflow: hidden*/
+	}
+	.sidebar {
+	  /*padding: 20px;*/
+	  width: 100%;
+	  text-align: center;
+	  background-color: #434A54;
+	  color: #fff;
+	}
+	.sidebar h3 {
+	  /*margin: 0;*/
+	}
+	.content,
+	.sidebar {
+	  float: left;
+	}
+
+
+	.sidebar {
+	  position: -webkit-sticky;
+	  position: sticky;
+	  top: 0;
+	  /*overflow: scroll;*/
+	}
+		html, body{
+			width: 100%;
+			font-size: 100%;
+			padding: 0;
+		}
+		.row:before, .row:after{
+	        content:"";
+	        display: float;
+	        overflow: hidden;
+	        visibility: hidden;
+	        clear:both;
+	        width: 0;
+	        height: 0;
+		}
+		.row{
+			background: gray;
+		 }
+		.container{
+			/*width: 960px;*/
+			margin: 0% auto;
+			padding: 0;
+			position: relative;
+			box-sizing: border-box;
+			background: red;
+			}
+		.columna, .columnas{
+			display: inline-block;
+			float: left;
+			margin-left: 2%;
+			margin-right: 0%;
+			box-sizing: border-box;
+			/*border-style: solid;*/
+			/*border-color: green;*/
+			position: relative;
+        	/*height: 100vh;         	*/
+        	max-height: 100vh;
+        	/*background: blue;*/
+        	overflow: auto;
+
+		}
+		.columna:first-child, .columnas:first-child{
+			margin-left: 0%;
+		}
+		.seis {
+			width: 15%;
+		}
+		.cinco{
+			width: 83%;
+		}
+		.cuatro{
+			width: 66%;
+		}
+		.tres{
+			width: 49%;
+		}
+		.dos.columna, .dos.columnas{
+			width: 32%;
+		}
+		.una.columna, .una.columnas{
+			width: 100%;
+		}
+		.cuatrocuatro{
+			width: 23.5%;
+		}
+		@media (min-width: 1200px) {			
+		}
+		@media (max-width: 1199px) and (min-width: 992px) {			
+		}
+		@media (max-width: 991px) and (min-width: 768px) {			
+		}
+		@media (min-width: 767px) {			
+		}
+		
+
+
+/*html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: #F5F7FA;
+  line-height: 1.2;
+}
+*/
+.cf:before,
+.cf:after {
+    content: " "; 
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+.wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 60px;
+  margin-bottom: 200px;
+}
+
+		textarea {
+			display: block;
+			width: 99%;
+			margin: 0;
+			border: none;
+			resize: none;
+		}
+		#listaNotas{
+			min-height: 3rem;
+			border: solid 1px #333;
+		}
+
+		#listaNotas, textarea{
+			/*width: 300px;*/
+			/*margin: 1rem auto;*/
+		}
+		button{
+			display: block;
+			/*width: 100px;*/
+			margin-right: 0;
+			margin-left: 85%;
+			border-radius: 4px;
+			border: 1px solid #47618a;
+			background: #71acfc;
+			margin-bottom: .5rem;
+			margin-top: .5rem;
+			padding: 0 1rem;
+			}
+
+		
+
+
+img {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-left: 2%;
+	margin-top: 1%;
+	width: 100px;
+	height: 100px;	
+
+}
+
+h2{
+	display: inline-block;
+	font-size: 35px;
+	margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    color: #fff;
+    background: #2196f3;
+    position: fixed;
+    height: 40px;
+    bottom: 0;
+    width: 100%;
+}
+
+.nav {
+	border: 1px solid #000;
+	border-top: none;
+	padding: 1rem;
+}
+
+.nav:first-child {
+	border-top: 1px solid #000;
+}
+
+.nav:hover {
+	background: #e6e6e5;
+
+}
+
+.nav:active {
+	background: #bfbfbf;
+}
+
+.ocultar {
+	visibility: hidden;
+}
+	
+.publicar {
+    text-align: center;
+    font-weight: bold;
+    color: rgba(0,0,0,.5);
+    border: 1.5px solid rgba(227,227,227,1);
+}
+
+.footerpublicar {
+    background: rgba(235,235,235,1);
+    border: 1px solid rgba(219,219,219,1);
+}
+
+.boton-cerrar {
+    margin-right: 2%;
+    display: inline-block;
+    margin-left: 98%;
+    padding: 1%;
+}
+	

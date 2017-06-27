@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>manipulacion del DOM</title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+		}
+
+		html{
+			font-size: 62.5%;
+		}
+
+		body{
+			font-size: 1.5rem;
+		}
+		textarea {
+			display: block;
+		}
+		#listaNotas{
+			min-height: 3rem;
+			border: solid 1px #333;
+		}
+
+		#listaNotas, textarea{
+			width: 300px;
+			margin: 1rem auto;
+		}
+		button{
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+		}
+		.post{
+			margin: 1rem ;
+			border: solid 1px #ddd;
+			/*padding: 0;*/
+			/*overflow: hidden*/
+			height: unset;
+			/*animation*/
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity .6s, visibility .6s;
+		}
+
+		.visible{
+			visibility: visible;
+			opacity: 1;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="listaNotas">
+		
+	</div>
+	
+	<textarea id="texto" name=""></textarea>
+	<button type="button" id="botTexto" >Publicar</button>
+	<script type="text/javascript">
+	
+	// let ul = document.getElementById('listaNotas'),
+	// 	ul = div.getElementsByTagName('ul')[0];	
+	// 		 document.querySelector('div#listaNotas > ul');
+
+	let lista = document.getElementById('listaNotas'),
+		texto = document.querySelector('#texto'),
+		botxt = document.querySelectorAll('button[type=button]')[0];
+
+
+	botxt.addEventListener('click',function(evt){
+		if(!!texto.value){
+			let post = document.createElement('div'),
+				txt = document.createTextNode(texto.value),
+				botel = document.createElement('button'),
+				txtel = document.createTextNode('x');
+
+			// div.setAttribute('class', 'post'); //No!!!
+			post.classList.add('post'); //correcta
+			post.appendChild(botel);
+			post.appendChild(txt);
+			botel.setAttribute('type', "button");
+			botel.classList.add('boton-cerrar');
+			// botel.innerHTML = 'x';
+			botel.appendChild(txtel);
+
+			// lista.appendChild(post);
+
+			botel.addEventListener('click', function(evt){
+				post.remove();
+				alert(txt + "borro");
+			})
+
+			lista.insertBefore(post, lista.firstChild);
+			alert(txt = "agrego");
+			setTimeout(function(){post.classList.add('visible');},10);
+			
+
+			texto.value = ''
+
+		}
+	})
+
+
+pinmba =JSON.parse(localstorage.posts); // parseo el string guardado en localstorage.post a  un array
+localstorage.post = JSON.stringify(pimba); // al array lo hago string y loguardo en localstorage.post
+		// document.links;
+		// document.boby;
+		// document.head;
+		// document.images;
+		// document.anchors;
+
+	</script>
+</body>
+</html>

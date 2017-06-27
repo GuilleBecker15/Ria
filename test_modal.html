@@ -100,7 +100,8 @@
 		<a href="#" class="boton-cerrar cerrar">x</a>
 		
 		<div class="cuerpo">
-			Este es un modal lorem ipsum dolor sit amet la cosa loca esta ria sabelo ñere
+			Lo lamento, aun no puede crear un nuevo curso debido a que no exiten profesores en el sistema. <br>
+			Dirijase a dar de alta profesores haciendo click en el boton y luego vuelva.
 		</div>
 
 	</div>
@@ -112,14 +113,15 @@
 
 <script type="text/javascript">
 
-let bot_abrir 	= document.getElementById('activar'),
-	ventana 	= document.getElementsByClassName('modal')[0],
-	bots_cerrar = ventana.getElementsByClassName('cerrar');
+let bot_abrir 	= document.getElementById('activar');
+let	ventana 	= document.getElementsByClassName('modal')[0];
+let	bots_cerrar = ventana.getElementsByClassName('cerrar');
 
 bot_abrir.addEventListener('click', function (evt)
 {
 	ventana.classList.add('activo');
 })
+
 
 for (let i = 0, l = bots_cerrar.length; i < l; i++)
 {
