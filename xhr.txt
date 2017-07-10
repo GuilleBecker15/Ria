@@ -1,0 +1,27 @@
+let xhr = new XMLHttpRequest()	//inicializo una variable de tipo XMLHttpRequest()
+
+
+
+xhr.status // para saber es status de la peticion
+
+xhr.response
+
+xhr.responseText //extraigo el contenido en formato text de la repuesta.
+
+let p = JSON.parse(xhr.responseText)
+
+xhr.open('POST','https://jsonplaceholder.typicode.com/posts/100') // despues que creo la variable xhr con .open le digo el metodo de la peticion y la url.
+
+xhr.onreadystatechange = evt => console.log('cambio readt stata a', xhr.readyState) //
+
+xhr.send() //envio la peticion
+
+xhr.onreadystatechange = evt => { if (xhr.readyState == 4) console.log ('cambio readt stata a:  termino', xhr.readyState) }
+
+xhr.onreadystatechange = evt => { if(xhr.readyState == 4) { let p = JSON.parse(xhr.responseText); console.log("algo", p.title) } }
+
+xhr.onprogress = evt=> console.log('Descargando...', evt.loaded, '/', evt.total)
+
+
+
+bootstrap studio!

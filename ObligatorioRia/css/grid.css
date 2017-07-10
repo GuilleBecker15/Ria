@@ -1,6 +1,7 @@
 	.post {
 		margin: 1rem ;
 		border: solid 1px #ddd;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		/*padding: 0;*/
 		/*overflow: hidden*/
 		height: unset;
@@ -8,7 +9,7 @@
 		opacity: 0;
 		visibility: hidden;
 	    /*overflow: auto;*/
-		transition: opacity 1s, visibility 1s;
+		transition: opacity .6s, visibility .6s;
 		text-align: justify;
 		padding: 1rem 1rem;
 		padding-top: 0;
@@ -20,12 +21,11 @@
 		visibility: visible;
 		opacity: 1;
 	}
-	.content {
-	  /*padding: 0 15px;*/
-	  /*width: 380px;*/
-	}
+	
 	.content /*h1*/ {
-	  margin-top: 0;
+	  padding: 0 15px;
+	  margin-top: 135px;
+	  width: 100%;
 	}
 	.content /* p */,
 	.sidebar /* p */{
@@ -55,29 +55,26 @@
 	  /*overflow: scroll;*/
 	}
 		html, body{
-			width: 100%;
+			/*width: 100%;*/
 			font-size: 100%;
 			padding: 0;
 		}
 		.row:before, .row:after{
 	        content:"";
-	        display: float;
+	        display: block;
 	        overflow: hidden;
 	        visibility: hidden;
 	        clear:both;
 	        width: 0;
 	        height: 0;
 		}
-		.row{
-			background: gray;
-		 }
+		
 		.container{
 			/*width: 960px;*/
 			margin: 0% auto;
 			padding: 0;
 			position: relative;
 			box-sizing: border-box;
-			background: red;
 			}
 		.columna, .columnas{
 			display: inline-block;
@@ -215,7 +212,7 @@ footer {
     color: #fff;
     background: #2196f3;
     position: fixed;
-    height: 40px;
+    height: 4%;
     bottom: 0;
     width: 100%;
 }
@@ -261,4 +258,110 @@ footer {
     margin-left: 98%;
     padding: 1%;
 }
-	
+.navegacion{
+
+	height: calc(100vh - 175px);
+}
+
+.chat{
+	height: calc(100vh - 175px);
+	background: gainsboro;
+}
+.una.columna.head{
+	position: fixed;
+	height: 135px;
+	z-index: 1000;
+	background: #2196f3;
+}
+.circle{
+		height: 10px;
+		width: 10px;
+		border-radius: 5px;
+		background-color: red;
+	}
+.conectado{
+	background-color: green;
+}
+.fa.fa-user-circle-o, .circle{
+	margin: 25% 35%;
+}
+.contacto:hover{
+	background: #e6e6e5;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.chatbox {
+	/* Esto lo deja chiquito y arriba */
+	/*display: none;*/
+	display: block;
+	visibility: hidden;
+	float: right;
+	position: fixed;
+	bottom: 4%;
+
+	background: transparent;
+	font-weight:bold;
+	/* font-size:	60%; */
+	padding:	2px;
+	border-radius: 3px;
+	/*height: 100px;*/
+	width: 49%;
+	/*margin-bottom: 3%;*/
+	margin-right: 32%;
+	margin-left: 17%;
+
+	/*border: solid .5px grey;*/
+	/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+}
+.chatbox .zona-activa {
+	text-decoration:none;
+	font-size:		16px;
+	color: 			white;
+	background:		#315cde;
+	padding:		.1em 10px;
+	border-radius: 	4px;
+
+	cursor: pointer;
+	display: ruby;
+}
+.chatbox .visible, .chatbox.visible {
+    display: block;
+    visibility: visible;
+}
+.chatbox ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 4px 0 0 0;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /*display: none;*/
+}
+li {
+	text-align: right;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border:.5px solid rgba(0, 0, 255, .4);
+	background: rgba(0,0,255, .8);
+	color: white;
+	border-radius: 5px;
+	margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 5px;
+
+}
+.contenedorchat{
+	display: inline-block;
+	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 145px;
+	margin: 0 1px;
+	overflow: hidden;
+
+}
+
+.contenedorchat input{
+	width: 92%;
+	margin: 0px;
+}
