@@ -44,7 +44,8 @@
 
 			lista.insertBefore(post, lista.firstChild);
 			agregar(txt);
-			setTimeout(function(){post.classList.add('visible');},601);
+			setTimeout(function(){post.classList.add('visible');},10);
+			// setTimeout(function(){post.classList.add('visible');},601);
 
 			texto.value = '';
 
@@ -80,10 +81,11 @@
 			post.appendChild(txt);
 			botoneliminar.setAttribute('type', "button");
 			botoneliminar.classList.add('boton-cerrar');
-			botoneliminar.appendChild(textoeliminar);
+			// botoneliminar.appendChild(textoeliminar);
 
 			botoneliminar.addEventListener('click',function(evt){
-				post.remove();
+				post.classList.remove('visible');
+				setTimeout(function(){post.remove();},700);
 				borrar(txt);
 			});
 			lista.insertBefore(post, lista.firstChild);
@@ -106,7 +108,9 @@
 						icono	= document.createElement('span'),
 						info 	= document.createElement('div'),	
 						strong	= document.createElement('strong'),
-						nombre	= document.createTextNode(respuestas[i].name),
+						parrafo	= document.createElement('span'),
+						parrafo2	= document.createElement('span'),
+						nombre	= document.createTextNode(respuestas[i].name+" "),
 						br 		= document.createElement('br'),
 						email	= document.createTextNode(respuestas[i].email),
 						divD	= document.createElement('div'),
@@ -114,6 +118,7 @@
 
 					row.classList.add('row');
 					row.classList.add('contacto');
+					row.setAttribute('name', nombre.textContent);
 
 					divI.classList.add('seis');
 					divI.classList.add('columnas');
@@ -123,6 +128,8 @@
 					info.classList.add('cuatro');
 					info.classList.add('columnas');
 					info.setAttribute('name', nombre.textContent);
+					parrafo.setAttribute('name', nombre.textContent);
+					parrafo2.setAttribute('name', nombre.textContent);
 
 					divD.classList.add('seis');
 					divD.classList.add('columnas');
@@ -134,10 +141,13 @@
 					divI.appendChild(icono);
 
 					strong.appendChild(nombre);
+					parrafo.appendChild(strong);
+					parrafo2.appendChild(email);
 
-					info.appendChild(nombre);
+					info.appendChild(parrafo);
 					info.appendChild(br);
-					info.appendChild(email);
+
+					info.appendChild(parrafo2);
 
 					divD.appendChild(connect);
 
@@ -148,15 +158,18 @@
 					row.appendChild(user);
 
 					row.addEventListener('click',(function(evt){
-						console.log("recien entro");
-						console.log(evt.target.getAttribute('name'));
-						console.log("recien entro");
+						// evt.preventDefault();
+						window.clickrow = evt;
+						console.log("-------------------------")
+						console.log(row);
+						console.log("-------------------------")
 						let nombre = evt.target.getAttribute('name');
-						console.log("despues de asignar");
-						console.log(nombre);
-						console.log("despues de asignar");
+						
 						let esVisible = chat.classList.contains('visible');
-						let existe = document.getElementById(evt.target.childNodes[0].textContent);
+						console.log("estoestoestoestoestoestoesto");
+						console.log(row.getAttribute('name'));
+						console.log("estoestoestoestoestoestoesto");
+						let existe = document.getElementById(row.getAttribute('name'));
 						let unico = true;
 						
 						if(existe && chat.childElementCount == 1){
@@ -168,22 +181,41 @@
 						// if (esVisible){
 						if(!existe){
 							chat.classList.add('visible');	
-							console.log(evt.target.childNodes[0].textContent);
+							// console.log(evt.target.childNodes[0]);
+							// var evento = evt;
+							window.evento = evt;
+							// console.log(evt.target.childNodes[0].textContent);
+							// console.log(evt.target.firstElementChild);
+							console.log("???????????????????????");
+							console.log(row.getAttribute('name'));
+							console.log("???????????????????????");
 							let div = document.createElement('div');
 							div.classList.add('contenedorchat');
-							div.setAttribute('id',evt.target.childNodes[0].textContent);
+							div.setAttribute('id',row.getAttribute('name'));
 							let span = document.createElement('span');
 							span.classList.add('zona-activa');
-							let name = document.createTextNode(evt.target.childNodes[0].textContent);
+							// let name = document.createTextNode(evt.target.childNodes[0].textContent);
+							console.log(evt.target);
+							// let name = document.createTextNode(evt.target.parentElement.getAttribute('name'));
+							let name = document.createTextNode(row.getAttribute('name'));
+							console.log(name);
 							span.appendChild(name);
+							let cerrarchat = document.createElement('strong');
+							cerrarchat.classList.add('cerrarchat');
+							let header = document.createElement('div');
+							header.appendChild(span);
+							header.appendChild(cerrarchat);
+							header.addEventListener('click',function(evt){
+								div.remove();
+							});
 							let ul = document.createElement('ul');
 							// ul.classList.add('visible');
-							for (let i = 0; i < 3; i++) {
-								let li = document.createElement('li');
-								let txt = document.createTextNode("Algo"+i);
-								li.appendChild(txt);
-								ul.appendChild(li);
-							}
+							// for (let i = 0; i < 3; i++) {
+							// 	let li = document.createElement('li');
+							// 	let txt = document.createTextNode("Algo"+i);
+							// 	li.appendChild(txt);
+							// 	ul.appendChild(li);
+							// }
 							let input = document.createElement('input');
 
 							input.addEventListener('keydown',(function(evt) {
@@ -203,7 +235,9 @@
 								// }
 							}));
 
-							div.appendChild(span);
+							// div.appendChild(span);
+							// div.appendChild(cerrarchat);
+							div.appendChild(header);
 							div.appendChild(ul);
 							div.appendChild(input);
 
